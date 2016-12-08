@@ -45,7 +45,7 @@ def mel_sampling(X,k):
             dist=np.inf
             #s=0
             for l,mu in enumerate(B):
-                if mu[0]==0 and mu[1]==0:
+                if l>i:
                     continue
                 mel=spatial.distance.mahalanobis(el,mu,covariance)
                 
