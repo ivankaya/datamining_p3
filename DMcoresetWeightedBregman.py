@@ -58,7 +58,7 @@ def reducer(key, values):
     oldmu = np.zeros([k,250],dtype='float')
     newmu = means
     np.shape(newmu)
-    eps = 0.0001
+    eps = 0.00001
     n = np.shape(values)[0]
     classi = np.ones(n)
     pi = np.zeros(k)
@@ -67,6 +67,7 @@ def reducer(key, values):
         oldmu = newmu
         for i in range(np.shape(values)[0]):
             classi[i] = np.argmin(np.square(values[i,1:] - newmu).sum(axis=1))
+        classi = classi.astype('int')
         pi = np.zeros(k)
         pix = np.zeros([k,250],dtype='float')
         for i in range(n):
